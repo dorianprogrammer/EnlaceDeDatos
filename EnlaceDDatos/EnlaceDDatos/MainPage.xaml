@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EnlaceDDatos;assembly=EnlaceDDatos"
+             x:Class="EnlaceDDatos.MainPage">
+
+    <ContentPage.Resources>
+        <local:Disco x:Key="Disco1"
+                     Titulo="let it be"
+                     Banda="The beatles"/>
+        <local:Datos x:Key="Datos1"/>
+    </ContentPage.Resources>
+
+    <Grid BindingContext="{Binding Source={StaticResource Datos1}}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ListView ItemsSource="{Binding Discos, Mode=TwoWay}"
+                  SelectedItem="{Binding DiscoSeleccionado,Mode=TwoWay}"
+                  HasUnevenRows="True"
+                  x:Name="list1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding Portada}"
+                                   Margin="10"
+                                   WidthRequest="200"
+                                   HeightRequest="200"/>
+
+                            <StackLayout Grid.Column="1">
+                                <Label Text="{Binding Titulo}" FontSize="Large"/>
+                                <Label Text="{Binding Banda}"/>
+                                <Label Text="{Binding Genero}"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <StackLayout Grid.Row="1">
+            <Label Text="{Binding DiscoSeleccionado.Titulo, Mode=OneWay}"/>
+            <Label Text="{Binding DiscoSeleccionado.Banda, Mode=OneWay}"/>
+            <Label Text="{Binding SelectedItem.Genero,Source={x:Reference list1}}"/>
+            <Label Text="{Binding DiscoSeleccionado.FechaLanzamiento, Mode=OneWay, 
+                StringFormat='{}{0:dd/MM/yyyy}'}"/>
+            <Button Text="Agregar disco"
+                    Clicked="OnCliked"/>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
