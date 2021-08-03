@@ -9,6 +9,8 @@
                      Titulo="let it be"
                      Banda="The beatles"/>
         <local:Datos x:Key="Datos1"/>
+
+        <local:PrecioConverter x:Key="PrecioConverter"/>
     </ContentPage.Resources>
 
     <Grid BindingContext="{Binding Source={StaticResource Datos1}}">
@@ -45,13 +47,15 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
+
         <StackLayout Grid.Row="1">
             <Label Text="{Binding DiscoSeleccionado.Titulo, Mode=OneWay}"/>
             <Label Text="{Binding DiscoSeleccionado.Banda, Mode=OneWay}"/>
             <Label Text="{Binding SelectedItem.Genero,Source={x:Reference list1}}"/>
             <Label Text="{Binding DiscoSeleccionado.FechaLanzamiento, Mode=OneWay, 
                 StringFormat='{}{0:dd/MM/yyyy}'}"/>
+            <Label Text="{Binding DiscoSeleccionado.Precio}"
+                   TextColor="{Binding DiscoSeleccionado.Precio, Converter={StaticResource PrecioConverter}}"/>
             <Button Text="Agregar disco"
                     Clicked="OnCliked"/>
         </StackLayout>

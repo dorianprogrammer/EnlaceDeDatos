@@ -61,6 +61,18 @@ namespace EnlaceDDatos
             }
         }
 
+        private decimal precio;
+
+        public decimal Precio
+        {
+            get { return precio; }
+            set
+            {
+                precio = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public override string ToString()
         {

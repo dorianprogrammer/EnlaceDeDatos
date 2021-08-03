@@ -5,11 +5,11 @@ using System.Text;
 
 namespace EnlaceDDatos
 {
-    public class Datos:NotificationObject
+    public class Datos : NotificationObject
     {
         private ObservableCollection<Disco> _discos;
 
-        public ObservableCollection<Disco> Discos   
+        public ObservableCollection<Disco> Discos
         {
             get { return _discos; }
             set
@@ -24,24 +24,30 @@ namespace EnlaceDDatos
             Discos = new ObservableCollection<Disco>();
             Discos.Add(new Disco()
             {
-                Banda = "The beatles", Titulo = "Help",
+                Banda = "The beatles",
+                Titulo = "Help",
                 Genero = "Rock and Roll",
                 FechaLanzamiento = new DateTime(1965, 8, 6),
-                Portada = "Help.jpg"
+                Portada = "Help.jpg",
+                Precio = (decimal)4.5
             });
             Discos.Add(new Disco()
             {
-                Banda = "The beatles", Titulo = "Revolver",
+                Banda = "The beatles",
+                Titulo = "Revolver",
                 Genero = "Rock and Roll",
                 FechaLanzamiento = new DateTime(1966, 8, 6),
-                Portada = "Revolver.jpg"
+                Portada = "Revolver.jpg",
+                Precio = (decimal)5
             });
             Discos.Add(new Disco()
             {
-                Banda = "The beatles", Titulo = "Let it be",
+                Banda = "The beatles",
+                Titulo = "Let it be",
                 Genero = "Rock and Roll",
                 FechaLanzamiento = new DateTime(1970, 5, 8),
-                Portada = "LetItBe.jpg"
+                Portada = "LetItBe.jpg",
+                Precio = (decimal)8
             });
         }
 
